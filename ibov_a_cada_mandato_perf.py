@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import yfinance as yf
 
-os.chdir('/home/brenno/Documentos/Instagram/dados')
+os.chdir('/home/brenno/Documentos/instagram_reels/dados')
 
 dados_ibov = pd.read_csv("dados_ibovespa.csv")
 
@@ -14,9 +14,11 @@ dados_ibov = dados_ibov.set_index("date")
 
 dados_ibov = dados_ibov['value_price']
 
-dados_ibov_att = yf.download("^BVSP", "2022-08-24", "2023-03-20")['Adj Close']
+dados_ibov_att = yf.download("^BVSP", "1994-12-20", "2023-03-20")['Adj Close']
 
-dados_ibov = dados_ibov.append(dados_ibov_att)
+#dados_ibov = dados_ibov.append(dados_ibov_att)
+
+dados_ibov = dados_ibov_att
 
 dados_ibov = dados_ibov.to_frame()
 
@@ -56,9 +58,13 @@ dados_ibov.loc[(dados_ibov.index > "2017-12-31") & (dados_ibov.index < "2023-01-
 
 dados_ibov.loc[dados_ibov.index > "2023-01-01", 'presidente'] = "Mandato Lula 3"
 
+print(dados_ibov)
+
 dados_ibov['retornos'] = dados_ibov['value_price'] + 1
 
 dados_ibov = dados_ibov.drop("value_price", axis = 1)
+
+#print(dados_ibov)
 
 dados_ibov["retorno_acumulado_ibovespa"] = dados_ibov.groupby('presidente')['retornos'].cumprod() - 1
 
