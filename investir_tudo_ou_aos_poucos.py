@@ -91,7 +91,7 @@ print(retorno_2_y_ibov)
 
 plt.style.use('cyberpunk')
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize = (10, 8))
 
 ax.grid(False)
 
@@ -107,8 +107,9 @@ ax.yaxis.set_major_formatter(tick.StrMethodFormatter('R${x:,.0f}'))
 
 plt.axhline(y=0, color = 'w')
 
-plt.title("Investir de uma vez MENOS Investir aos poucos em perídos de 2 anos no ibovespa")
+plt.title("Investir de uma vez MENOS \n Investir aos poucos em períodos de 2 anos no ibovespa")
 
+plt.savefig('investirtudo.png')
 plt.show()
 
 
