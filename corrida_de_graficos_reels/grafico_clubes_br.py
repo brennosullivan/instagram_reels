@@ -4,11 +4,6 @@ import matplotlib.pyplot as plt
 
 
 
-
-plt.rcParams["font.family"] = "sans-serif"
-plt.rcParams['font.sans-serif'] = 'SF Pro Display'
-plt.rcParams['font.weight'] = 'light'
-
 df = pd.read_csv('dados_clubes_br_tratados.csv')
 
 
